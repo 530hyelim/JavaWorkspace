@@ -12,6 +12,7 @@ public class Student {
 	public double height;
 	
 	// 2. 생성자 / 생성자부 (생략가능)
+	// ㅋㅋㅋㅋㅋ
 	
 	// 3. 기능 / 메서드부
 	// 클래스의 메서드들은 className.메서드명 상태로 static 영역의 method area에 저장됨
