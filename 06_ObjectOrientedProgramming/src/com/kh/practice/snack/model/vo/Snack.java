@@ -19,7 +19,7 @@ public class Snack {
 	}
 	
 	public String information() {
-		return "";
+		return kind+"("+name+" - "+flavor+") "+numOf+"개 "+price+"원";
 	}
 	
 	public void setKind(String kind) {
