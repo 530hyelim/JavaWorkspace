@@ -24,7 +24,7 @@ public class SnackMenu {
 		
 		System.out.println(scr.saveData(kind, name, flavor, numOf, price));
 		System.out.print("저장된 정보를 확인하시겠습니까?(y/n) : ");
-		char ans = sc.nextLine().charAt(0);
+		char ans = sc.nextLine().toLowerCase().charAt(0);
 		if (ans == 'y') System.out.println(scr.confirmData());
 	}
 }

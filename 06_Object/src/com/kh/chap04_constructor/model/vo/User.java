@@ -43,6 +43,18 @@ public class User {
 		this.age = age;
 		this.gender = gender;
 	}
+	public User(String userId, int age) {
+		//세터는 한번에 한 데이터만 초기화 할 수 있는데
+		//매개변수를 여러개 추가해서 한번에 초기화 가능
+		this.userId = userId;
+		this.age = age;
+		this.gender = gender;
+	}
 	
+//	public static void main(String[] args) {
+//		User u = new User("hh", 15);
+//		System.out.println(u.gender);
+//	}
+
 	//메서드부(기능담당)
 }
