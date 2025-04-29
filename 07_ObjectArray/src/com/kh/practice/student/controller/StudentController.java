@@ -30,6 +30,7 @@ public class StudentController {
 		double[] arr = new double[2];
 		arr[0] = sumScore();
 		arr[1] = sumScore() / sArr.length;
+		//arr[1] = arr[0] / 5.0;
 		return arr;
 	}
 }
