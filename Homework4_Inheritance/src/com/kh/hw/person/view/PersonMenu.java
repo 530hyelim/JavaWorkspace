@@ -61,19 +61,17 @@ public class PersonMenu {
 			sc.nextLine();
 			
 			switch(menu) {
-			case 1:
-				if(full) {
-					System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
-				} else {
-					insertStudent();
-				}
-				break;
 			case 2:
 				printStudent();
 				break;
 			case 9:
 				System.out.println("메인으로 돌아갑니다.");
 				return;
+			case 1:
+				if(!full) {
+					insertStudent();
+					break;
+				}
 			default :
 				System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
 			}
@@ -135,21 +133,17 @@ public class PersonMenu {
 			if(pc.personCount()[0] == 3) {
 				System.out.println("학생을 담을 수 있는 공간이 꽉 찼기 때문에"
 						+ "학생 추가를 종료하고 학생 메뉴로 돌아갑니다.");
-				return;
+				break; //return;
 			}
 			System.out.print("그만하시려면 N(또는 n), 이어하시려면 아무키나 누르세요 :");
 			char ans = sc.nextLine().toLowerCase().charAt(0);
-			if(ans == 'n') return;
+			if(ans == 'n') break; //return;
 		}
 	}
 	
 	public void printStudent() {
-		int[] count = pc.personCount();
-		Student[] sArr = pc.printStudent();
-		
-		System.out.println();
-		for(int i = 0; i < count[0]; i++) {
-			System.out.println(sArr[i]);
+		for(Student s : pc.printStudent()) {
+			if(s != null) System.out.println(s);
 		}
 	}
 	

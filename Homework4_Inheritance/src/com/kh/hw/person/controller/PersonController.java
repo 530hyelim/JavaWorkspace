@@ -9,6 +9,7 @@ public class PersonController {
 	
 	public int[] personCount() {
 		int[] count = new int[2];
+		//배열의 인덱스에 들어간 값이 null이라면 저장되지 않은 인덱스
 		for(int i = 0; i < s.length; i++) {
 			if(s[i] == null) {
 				count[0] = i;
@@ -16,12 +17,10 @@ public class PersonController {
 			}
 			count[0] = ++i;
 		}
-		for(int i = 0; i < e.length; i++) {
-			if(e[i] == null) {
-				count[1] = i;
-				break;
+		for(Employee /* or Person or Object(다형성)*/ emp : e) {
+			if(emp != null) {
+				count[1] += 1;
 			}
-			count[1] = ++i;
 		}
 		return count;
 	}
