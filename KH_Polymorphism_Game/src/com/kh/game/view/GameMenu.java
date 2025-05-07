@@ -94,7 +94,7 @@ public class GameMenu {
 			gameStart();
 			return;
 		}
-		Monster m = GameController.createMonster(mon);
+		Monster m = gc.createMonster(mon);
 		Characters c = gc.getCharacter();
 		
 		System.out.println("전투를 시작합니다!");
@@ -129,17 +129,20 @@ public class GameMenu {
 				System.out.println(m.getName()+" 처치! 전투에서 승리했습니다!!");
 				System.out.println(m.getExp()+" 경험치를 획득했습니다!");
 				c.setExp(c.getExp()+m.getExp());
-				return;
+				//return;
 			} else {
 				m.attack(c);				
 			}
 
 			if(c.getHp() <= 0) {
 				System.out.println("전투에서 패배했습니다!");
-				c.setHp(c.getMaxHp());
-				return;
+				//c.setHp(c.getMaxHp());
+				//return;
+				break;
 			}
-		}		
+		}
+		c.setHp(c.getMaxHp());
+		return;
 	}
 	
 	public void characterInfo() {

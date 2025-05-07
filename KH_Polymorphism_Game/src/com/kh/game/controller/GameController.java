@@ -24,7 +24,7 @@ public class GameController {
 		return character;
 	}
 	
-	public static Monster createMonster(int num) {
+	public Monster createMonster(int num) {
 		Monster monster = null;
 		switch(num) {
 		case 1:

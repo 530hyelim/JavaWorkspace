@@ -1,9 +1,14 @@
 package com.kh.exception.run;
 
+import java.io.IOException;
+
 import com.kh.exception.controller.A_UncheckedException;
+import com.kh.exception.controller.B_CheckedException;
+import com.kh.exception.controller.C_CustomException;
 
 public class Run {
-	public static void main(String[] args) {
+	// 가능하지만 비권장됨 (메인 스레드에서 처리하게됨)
+	public static void main(String[] args) throws IOException{
 		// NullPointerException
 		// IndexOutofBoundException
 		
@@ -27,6 +32,11 @@ public class Run {
 		 * 3. 예외처리 구문을 아예 사용하지 않는 방법
 		 */
 		A_UncheckedException a = new A_UncheckedException();
-		a.method3();
+		//a.method3();
+		B_CheckedException b = new B_CheckedException();
+		b.method2();
+		
+		// 예외를 강제로 발생시킬 수 있음
+		throw new C_CustomException("사용자 정의 에러 발생");
 	}
 }
