@@ -39,32 +39,51 @@ public class FileMenu {
 		}
 	}
 	
+//	public void fileSave() {
+//		StringBuilder sb = new StringBuilder();
+//		while(true) {			
+//			System.out.println("파일에 저장할 내용을 입력하세요.");
+//			System.out.println("ex끝it 이라고 입력하면 종료됩니다.");
+//			System.out.print("내용 : ");
+//			String s = sc.nextLine();
+//			
+//			if (s.equals("ex끝it")) {
+//				while(true) {					
+//					System.out.print("저장할 파일 명을 입력해주세요(ex. myFile.txt) : ");
+//					String fileName = sc.nextLine();
+//					File file = new File(fileName);
+//					if(file.exists()) {
+//						System.out.print("이미 존재하는 파일입니다. 덮어쓰시겠습니까?(y/n) ");
+//						char ans = sc.nextLine().toLowerCase().charAt(0);
+//						if (ans == 'n') {
+//							continue;
+//						}
+//					}
+//					fc.fileSave(fileName, sb);
+//					return;
+//				}
+//			}
+//			sb.append(s);
+//			sb.append("\n");
+//		}
+//	}
+	
 	public void fileSave() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = addText();
 		while(true) {			
-			System.out.println("파일에 저장할 내용을 입력하세요.");
-			System.out.println("ex끝it 이라고 입력하면 종료됩니다.");
-			System.out.print("내용 : ");
-			String s = sc.nextLine();
+			System.out.println("저장할 파일 명을 입력해주세요(ex. myFile.txt) : ");
+			String file = sc.nextLine();
 			
-			if (s.equals("ex끝it")) {
-				while(true) {					
-					System.out.print("저장할 파일 명을 입력해주세요(ex. myFile.txt) : ");
-					String fileName = sc.nextLine();
-					File file = new File(fileName);
-					if(file.exists()) {
-						System.out.print("이미 존재하는 파일입니다. 덮어쓰시겠습니까?(y/n) ");
-						char ans = sc.nextLine().toLowerCase().charAt(0);
-						if (ans == 'n') {
-							continue;
-						}
-					}
-					fc.fileSave(fileName, sb);
-					return;
+			if(fc.checkName(file)) {
+				System.out.print("이미 존재하는 파일입니다. 덮어쓰시겠습니까?(y/n) ");
+				char ans = sc.nextLine().toLowerCase().charAt(0);
+				
+				if(ans == 'n') {
+					continue;
 				}
 			}
-			sb.append(s);
-			sb.append("\n");
+			fc.fileSave(file, sb);
+			break;
 		}
 	}
 	
@@ -75,7 +94,7 @@ public class FileMenu {
 			System.out.println("없는 파일입니다.");
 			return;
 		}
-		System.out.println(fc.fileOpen(fileName).toString());
+		System.out.println(fc.fileOpen(fileName));
 	}
 	
 	public void fileEdit() {
@@ -85,6 +104,10 @@ public class FileMenu {
 			System.out.println("없는 파일입니다.");
 			return;
 		}
+		fc.fileEdit(fileName, addText());
+	}
+	
+	private StringBuilder addText() {
 		StringBuilder sb = new StringBuilder();
 		while(true) {			
 			System.out.println("파일에 저장할 내용을 입력하세요.");
@@ -93,12 +116,10 @@ public class FileMenu {
 			String s = sc.nextLine();
 
 			if (s.equals("ex끝it")) {
-				fc.fileEdit(fileName, sb);
-				return;
+				break;
 			}
-			sb.append(s);
-			sb.append("\n");
+			sb.append(s + "\n");
 		}
-		
+		return sb;
 	}
 }
