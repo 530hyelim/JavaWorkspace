@@ -14,7 +14,8 @@ public class BookDAO {
 	private Book[] bArr = new Book[10];
 	
 	public void fileSave(Book[] bArr) {
-		try(ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("book.txt", true))) {
+		try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream("book.txt"))) {
+			// 프로그램 처음 시작할때 BookMenu()에서 북객체 어레이 저장된값 불러오기 때문에 true써서 이어쓰기하면 에러남
 			for(Book b : bArr) {
 				if(b != null) os.writeObject(b);
 			}
@@ -27,12 +28,11 @@ public class BookDAO {
 	
 	public Book[] fileRead() {
 		try(ObjectInputStream os = new ObjectInputStream(new FileInputStream("book.txt"))) {
-//			int index = 0;
-//			while(true) {
-//				bArr[index++] = (Book)os.readObject();
-//			}
-			for(int i = 0; i < bArr.length; i++) {
-				bArr[i] = (Book)os.readObject();
+			int index = 0;
+			while(true) {
+				bArr[index++] = (Book)os.readObject();
+				//만약에 객체를 11개 저장했으면 arrayOutofboundException 뜨려나?????
+				//catch clause 추가하거나 while(index < bArr.length)로 바꾸면 될듯
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

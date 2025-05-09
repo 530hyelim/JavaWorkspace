@@ -1,6 +1,5 @@
 package com.kh.practice.book.view;
 
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -16,6 +15,7 @@ public class BookMenu {
 	public BookMenu() {
 		bc.makeFile();
 		bArr = bc.fileRead();
+		// 이전에 저장해뒀다가 프로그램 재시작시 불러오기
 	}
 	
 	public void mainMenu() {
@@ -59,7 +59,7 @@ public class BookMenu {
 		
 		String[] dates = date.split("-");
 		int year = Integer.parseInt(dates[0]);
-		int month = Integer.parseInt(dates[1]) + 1;
+		int month = Integer.parseInt(dates[1])-1;
 		int day = Integer.parseInt(dates[2]);
 		Calendar c = new GregorianCalendar(year, month, day);
 		
@@ -74,7 +74,7 @@ public class BookMenu {
 	
 	public void fileRead() {
 		for(Book b : bc.fileRead()) {
-			System.out.println(b);
+			if(b != null) System.out.println(b);
 		}
 	}
 }
