@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.TreeSet;
 
+import com.kh.practice.set.model.compare.SortedLottery;
 import com.kh.practice.set.model.vo.Lottery;
 
 public class LotteryController {
@@ -26,11 +27,13 @@ public class LotteryController {
 			return null;
 		}
 		ArrayList<Lottery> arrList = new ArrayList<>(lottery);
-		for(int i = 0; i < 4 - win.size(); i++) {
-			int random = (int)Math.random()*lottery.size()+1;
+		int winSize = win.size();
+		for(int i = 0; i < 4 - winSize; i++) {
+			int random = (int)(Math.random()*(lottery.size()));
 			Lottery winner = arrList.get(random);
 			if(win.contains(winner)) {
 				i--;
+				continue;
 			}
 			win.add(winner);
 		}
@@ -38,11 +41,12 @@ public class LotteryController {
 	}
 	
 	public TreeSet sortedWinObject() {
-		TreeSet<Lottery> tSet = new 
-		return null;
+		TreeSet<Lottery> treeSet = new TreeSet<>(new SortedLottery());
+		treeSet.addAll(win);
+		return treeSet;
 	}
 	
 	public boolean searchWinner(Lottery l) {
-		return false;
+		return win.contains(l);
 	}
 }

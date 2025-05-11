@@ -34,7 +34,7 @@ public class Lottery {
 
 	@Override
 	public String toString() {
-		return "Lottery [name=" + name + ", phone=" + phone + "]";
+		return name + "(" + phone + ")";
 	}
 
 	public String getName() {
