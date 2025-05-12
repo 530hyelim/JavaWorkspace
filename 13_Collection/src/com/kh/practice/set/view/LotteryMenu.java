@@ -54,13 +54,11 @@ public class LotteryMenu {
 		int num = sc.nextInt();
 		sc.nextLine();
 		
-		String name = "";
-		String phone = "";
 		for(int i = 0; i < num; i++) {
 			System.out.print("이름 : ");
-			name = sc.nextLine();
+			String name = sc.nextLine();
 			System.out.print("핸드폰 번호('-'빼고) : ");
-			phone = sc.nextLine();
+			String phone = sc.nextLine();
 			
 			if(!lc.insertObject(new Lottery(name, phone))) {
 				System.out.println("중복된 대상입니다. 다시 입력하세요.");

@@ -2,12 +2,20 @@ package com.kh.practice.set.model.vo;
 
 import java.util.Objects;
 
-public class Lottery {
+public class Lottery implements Comparable<Lottery>{
 	private String name;
 	private String phone;
 	
 	public Lottery() {
 		
+	}
+	
+	@Override
+	public int compareTo(Lottery o) {
+		if(getName().compareTo(o.getName()) == 0) {
+			return getPhone().compareTo(o.getPhone());
+		}
+		return getName().compareTo(o.getName());
 	}
 	
 	public Lottery(String name, String phone) {
