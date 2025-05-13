@@ -38,7 +38,7 @@ public class MemberController {
 	
 	public void changeName(String id, String newName) {
 		Member m = (Member) map.get(id);
-		if (m != null) {
+		if (m != null) { // MemberMenu에서만 사용하고 있고 이미 확인하고 있기 때문에 불필요
 			m.setName(newName);
 		}
 	}
@@ -49,7 +49,7 @@ public class MemberController {
 		for(String key : keySet) {
 			Member m = (Member) map.get(key);
 			if(m.getName().equals(name)) {
-				tm.put(key, m);
+				tm.put(key, name);
 			}
 		}
 		return tm;

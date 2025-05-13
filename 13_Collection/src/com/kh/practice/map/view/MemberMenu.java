@@ -1,5 +1,6 @@
 package com.kh.practice.map.view;
 
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
@@ -12,7 +13,7 @@ public class MemberMenu {
 	MemberController mc = new MemberController();
 	
 	public void mainMenu() {
-		System.out.println("========== KH  사이트  ==========\n");
+		System.out.println("========== KH  사이트  ==========");
 		
 		while(true) {
 			System.out.println("*******  메인  메뉴  *******");
@@ -145,11 +146,16 @@ public class MemberMenu {
 		String name = sc.nextLine();
 		
 		TreeMap sameName = mc.sameName(name);
-		Set<String> keySet = sameName.keySet();
-		for (String key : keySet) {
-			Member m = (Member) sameName.get(key);
-			System.out.println(m.getName() + '-' + key);
+//		Set<String> keySet = sameName.keySet();
+//		for (String key : keySet) {
+//			Member m = (Member) sameName.get(key);
+//			System.out.println(m.getName() + '-' + key);
+//		}
+		Set<Entry<String,String>> entrySet = sameName.entrySet();
+		for (Entry<String,String> entry : entrySet) {
+			System.out.println(entry.getValue() + '-' + entry.getKey());
 		}
+		
 	}
 	
 }
