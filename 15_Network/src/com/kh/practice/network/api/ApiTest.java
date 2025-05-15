@@ -3,6 +3,7 @@ package com.kh.practice.network.api;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -26,6 +27,8 @@ public class ApiTest {
 				System.out.println(data);
 			}
 			br.close();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

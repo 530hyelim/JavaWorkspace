@@ -10,12 +10,11 @@ public class IPSearch {
 		System.out.print("호스트명 : ");
 		String hostname = sc.nextLine();
 		
-		InetAddress[] address;
 		try {
-			address = InetAddress.getAllByName(hostname);
+			InetAddress[] address = InetAddress.getAllByName(hostname);
 			System.out.println(hostname+"는 "+address.length+"개의 IP주소를 가지고 있습니다.");
 			for (int i = 0; i < address.length; i++) {
-				System.out.println(i+1 +"번 IP = "+address[i].toString());
+				System.out.println(i+1 +"번 IP = "+address[i].getHostAddress());
 			}
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
