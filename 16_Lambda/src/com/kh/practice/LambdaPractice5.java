@@ -13,10 +13,13 @@ public class LambdaPractice5 {
 	
 	public static BiFunction<Integer, Integer, Integer> getOperator(String type) { 
 		//코드  구현 
-		if(type.equals("+")) return (x, y) -> x + y;
-		if(type.equals("-")) return (x, y) -> x - y;
-		if(type.equals("*")) return (x, y) -> x * y;
-		if(type.equals("/")) return (x, y) -> x / y;
-		return (x, y) -> x % y;
+		switch(type) {
+		case "+": return (x, y) -> x + y;
+		case "-": return (x, y) -> x - y;
+		case "*": return (x, y) -> x * y;
+		case "/": return (x, y) -> x / y;
+		case "%": return (x, y) -> x % y;
+		default : throw new RuntimeException("잘못된 연산자입니다.");
+		}
 	}
 }

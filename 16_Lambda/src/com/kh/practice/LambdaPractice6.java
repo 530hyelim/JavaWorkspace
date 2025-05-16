@@ -19,7 +19,10 @@ public class LambdaPractice6 {
 	
 	public static Comparator<String> getComparator(String mode) { 
 		//코드  구현 
-		if(mode.equals("length")) return (x, y) -> x.length()-y.length();
-		return (x, y) -> y.compareTo(x);
+		switch(mode) {
+		case "length": return (x, y) -> x.length()-y.length();
+		case "reverse": return (x, y) -> y.compareTo(x);
+		default: throw new RuntimeException("제공하지 않는 정렬방식입니다.");
+		}
 	} 
 }
