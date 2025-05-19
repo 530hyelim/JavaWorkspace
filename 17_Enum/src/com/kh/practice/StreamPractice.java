@@ -16,7 +16,7 @@ public class StreamPractice {
                 new Student("김말똥",29, 90), 
                 new Student("아무개",23, 70)); 
 		String[] wordArr = { "a b c d", "홍  길동", "h el lo wor ld" }; 
-		IntStream dan = IntStream.range(1, 10);   
+		 
 		
 		System.out.println("1번 문제 결과 : ");
 		list.stream()
@@ -39,7 +39,8 @@ public class StreamPractice {
 		
 		System.out.print("\n4번 문제 결과 : ");
 		List<String> result4 = strlist.stream()
-			.map(s -> s.toUpperCase())
+			//.map(s -> s.toUpperCase())
+			.map(String::toUpperCase)
 			.collect(Collectors.toList());
 		System.out.println(result4);
 		
@@ -48,15 +49,20 @@ public class StreamPractice {
 			.distinct()
 			.reduce("",(str, s) -> str += s);
 		System.out.println(result5);
+		// 초기값이 없을 경우 첫번째 요소가 str에 들어가는데, 
+		// 요소 값이 없을 경우가 있으므로 .get() 사용해야함
 		
 		System.out.print("6번 문제 결과 : ");
 		slist.stream()
-			.sorted(new Comparator<Student>() {
+			.sorted((s1, s2) -> {
+				return s1.getName().compareTo(s2.getName());
+			})
+			/*.sorted(new Comparator<Student>() {
 				@Override
 				public int compare(Student s1, Student s2) {
 					return s1.getName().compareTo(s2.getName());
 				}
-			})
+			})*/
 			.forEach(std -> System.out.print(std.getName()
 					+ " : " + std.getAge() + " "));
 		
@@ -76,10 +82,28 @@ public class StreamPractice {
 		
 		System.out.println("9번 문제 결과 : ");
 		
-		dan.forEach(x ->
-			IntStream.range(2, 10)
-			.forEach(y -> System.out.println(x * y))
-				);
+		IntStream dan = IntStream.range(1, 10);  
+		IntStream.range(1, 10).forEach(x ->
+			dan.forEach(y -> {
+				//if(x != 1)
+				System.out.println(x + " * " + y + " = " + x * y);
+			}));
+		// 내부에 있는 forEach가 한번 반복이 끝나면 스트림이 비워지기 때문에
+		// 두번째 반복부터 에러가 나게 됨
+		
+//		IntStream i = IntStream.range(1, 10);
+//		dan.forEach(d -> {
+//			i.forEach(num -> {
+//				System.out.printf("%d X %d = %d\n", d, num, d * num);
+//			});
+//		});
+//		
+//		dan.forEach(d -> {
+//			IntStream ii = IntStream.range(1, 10);
+//			ii.forEach(num -> {
+//				System.out.printf("%d X %d = %d\n", d, num, d * num);
+//			});
+//		});
 		
 		System.out.print("10번 문제 결과 : ");
 		boolean result10 = Arrays.stream(wordArr)
