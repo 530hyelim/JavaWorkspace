@@ -20,7 +20,7 @@ public class Run {
 		FileWriter fw = null;
 		try(FileReader fr = new FileReader("example.txt")) {
 			fw = new FileWriter("example.txt", true);
-			int value = 0;
+			int value;
 			while((value = fr.read()) != -1) {
 				fw.write((char)value);
 			}
